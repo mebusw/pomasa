@@ -1,60 +1,71 @@
-% LaTeX头部配置文件
-% 用于控制PDF输出格式，特别是中文支持
-
-% 字体配置 - 中文支持
+% Font configuration for CJK (Chinese, Japanese, Korean) support
 \usepackage{fontspec}
 \usepackage{xeCJK}
 
-% 设置字体（根据系统可用字体调整）
-% macOS系统常用字体
-\setmainfont{Cochin}
-\setCJKmainfont{Songti SC}
+% Set fonts for macOS
+% If these fonts are not available, please change them to available fonts on your system
+\setmainfont{Times New Roman}
+\setCJKmainfont[BoldFont=Songti SC Bold, ItalicFont=Kaiti SC]{Songti SC}
 \setCJKsansfont{PingFang SC}
+\setCJKmonofont{STFangsong}
 
-% 如果在Linux系统上，可以使用以下配置：
-% \setmainfont{Times New Roman}
-% \setCJKmainfont{SimSun}
-% \setCJKsansfont{SimHei}
+% Page layout
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
 
-% 页面布局
-\usepackage{geometry}
-\geometry{a4paper, margin=2.5cm}
-
-% 行间距
+% Line spacing
 \usepackage{setspace}
 \onehalfspacing
 
-% 段落格式
-\setlength{\parindent}{2em}
-\setlength{\parskip}{0.5em}
-
-% 超链接
+% Hyperlinks
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
+    filecolor=magenta,
     urlcolor=blue,
-    citecolor=blue
 }
 
-% 表格
-\usepackage{booktabs}
-\usepackage{array}
+% Paragraph formatting
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.5em}
 
-% 图片
-\usepackage{graphicx}
 
-% 中文特殊支持
-\usepackage{xeCJK}
-\usepackage{xltxtra}
-
-% 颜色支持
+% Code block settings
+\usepackage{listings}
 \usepackage{xcolor}
 
-% 代码块
-\usepackage{listings}
-\lstset{
-    basicstyle=\ttfamily\small,
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
     breaklines=true,
-    frame=single
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    xleftmargin=\parindent
 }
+
+\lstset{style=mystyle}
+
+% Fix for long URLs
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}

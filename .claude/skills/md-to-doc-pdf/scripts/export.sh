@@ -2,12 +2,37 @@
 
 # STR-09 Deliverable Export Pipeline
 # Converts Markdown reports to DOCX and PDF
+#
+# Usage: export.sh <PROJECT_FOLDER> <INPUT_FILE> [OUTPUT_NAME]
+#   PROJECT_FOLDER: Path to the project folder
+#   INPUT_FILE: Relative path from PROJECT_FOLDER to the input markdown file
+#   OUTPUT_NAME: (Optional) Base name for output files (without extension)
+#
+# Examples:
+#   export.sh /path/to/project data/04.report/final_report.md
+#   export.sh /path/to/project docs/report.md my_report
 
 # Color definitions
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
+
+# Parse arguments
+PROJECT_FOLDER="${1}"
+INPUT_FILE="${2}"
+OUTPUT_NAME="${3}"
+
+# Validate arguments
+if [ -z "$PROJECT_FOLDER" ] || [ -z "$INPUT_FILE" ]; then
+    echo -e "${RED}Error: Missing required arguments${NC}"
+    echo "Usage: $0 <PROJECT_FOLDER> <INPUT_FILE> [OUTPUT_NAME]"
+    echo ""
+    echo "Examples:"
+    echo "  $0 /path/to/project data/04.report/final_report.md"
+    echo "  $0 /path/to/project docs/report.md my_report"
+    exit 1
+fi
 
 # Check for Pandoc
 check_pandoc() {
@@ -35,11 +60,21 @@ check_xelatex() {
 
 # Setup paths
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-INPUT_FILE="${PROJECT_DIR}/data/04.report/final_report.md"
-OUTPUT_DIR="${PROJECT_DIR}/_output"
+
+# Resolve absolute paths
+PROJECT_FOLDER="$(cd "$PROJECT_FOLDER" && pwd)"
+INPUT_FILE="${PROJECT_FOLDER}/${INPUT_FILE}"
+OUTPUT_DIR="${PROJECT_FOLDER}/_output"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-BASENAME="industry_research_report_${TIMESTAMP}"
+
+# Use provided output name or generate default
+if [ -n "$OUTPUT_NAME" ]; then
+    BASENAME="${OUTPUT_NAME}"
+else
+    # Generate default basename from input filename
+    INPUT_BASENAME=$(basename "$INPUT_FILE" .md)
+    BASENAME="${INPUT_BASENAME}_${TIMESTAMP}"
+fi
 
 # Create output directory
 mkdir -p "$OUTPUT_DIR"
@@ -70,14 +105,12 @@ export_docx() {
             -t docx \
             --reference-doc="${SCRIPT_DIR}/docx-template.docx" \
             --toc \
-            --toc-depth=3 \
             -o "$output_file"
     else
         pandoc "$INPUT_FILE" \
             -f markdown \
             -t docx \
             --toc \
-            --toc-depth=3 \
             -o "$output_file"
     fi
 
@@ -110,7 +143,7 @@ export_pdf() {
             --toc-depth=3 \
             -V geometry:margin=1in \
             -V documentclass=article \
-            -V fontsize=11pt \
+            -V fontsize=12pt \
             -V linestretch=1.5 \
             -o "$output_file"
     else
@@ -122,7 +155,7 @@ export_pdf() {
             --toc-depth=3 \
             -V geometry:margin=1in \
             -V documentclass=article \
-            -V fontsize=11pt \
+            -V fontsize=12pt \
             -V linestretch=1.5 \
             -V CJKmainfont="STSong" \
             -o "$output_file"
@@ -149,7 +182,12 @@ main() {
     echo -e "Output directory: ${OUTPUT_DIR}"
     echo ""
     echo "Generated files:"
-    ls -lh "${OUTPUT_DIR}"/*"${TIMESTAMP}"* 2>/dev/null | awk '{print "  - " $9 " (" $5 ")"}'
+    for ext in docx pdf; do
+        if [ -f "${OUTPUT_DIR}/${BASENAME}.${ext}" ]; then
+            size=$(ls -lh "${OUTPUT_DIR}/${BASENAME}.${ext}" | awk '{print $5}')
+            echo "  - ${OUTPUT_DIR}/${BASENAME}.${ext} (${size})"
+        fi
+    done
 }
 
 # Execute main flow

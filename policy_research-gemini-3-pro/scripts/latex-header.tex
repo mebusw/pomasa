@@ -1,0 +1,31 @@
+% Font configuration for CJK (Chinese, Japanese, Korean) support
+\usepackage{fontspec}
+\usepackage{xeCJK}
+
+% Set fonts for macOS
+% If these fonts are not available, please change them to available fonts on your system
+\setmainfont{Times New Roman}
+\setCJKmainfont[BoldFont=Songti SC Bold, ItalicFont=Kaiti SC]{Songti SC}
+\setCJKsansfont{PingFang SC}
+\setCJKmonofont{STFangsong}
+
+% Page layout
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+}
+
+% Paragraph formatting
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.5em}

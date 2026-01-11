@@ -1,0 +1,106 @@
+% LaTeX header for Chinese document support
+% Used by Pandoc when generating PDF files
+
+% Font settings for Chinese
+\usepackage{xeCJK}
+\setCJKmainfont{STSong}  % 使用宋体作为主字体
+\setCJKsansfont{STHeiti} % 使用黑体作为无衬线字体
+\setCJKmonofont{STKaiti} % 使用楷体作为等宽字体
+
+% Alternative font options (uncomment if above fonts not available):
+% For macOS:
+% \setCJKmainfont{Songti SC}
+% \setCJKsansfont{Heiti SC}
+% \setCJKmonofont{Kaiti SC}
+
+% For Windows:
+% \setCJKmainfont{SimSun}
+% \setCJKsansfont{SimHei}
+% \setCJKmonofont{KaiTi}
+
+% For Linux (Ubuntu):
+% \setCJKmainfont{Noto Serif CJK SC}
+% \setCJKsansfont{Noto Sans CJK SC}
+% \setCJKmonofont{Noto Sans Mono CJK SC}
+
+% Paragraph settings
+\setlength{\parindent}{2em}  % 段首缩进
+\setlength{\parskip}{0.5em}  % 段间距
+
+% Section formatting
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.5ex plus .5ex minus .2ex}{1.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1.25ex plus .5ex minus .2ex}{1ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{1.25ex plus .5ex minus .2ex}{1ex plus .2ex}
+
+% Table settings
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+
+% Table caption in Chinese
+\usepackage{caption}
+\captionsetup[table]{name=表}
+\captionsetup[figure]{name=图}
+
+% List settings
+\usepackage{enumitem}
+\setlist{noitemsep, topsep=0pt}
+
+% Hyperlink settings
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={Policy Research Report},
+    pdfauthor={Policy Research Team},
+}
+
+% Page layout
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Code block settings
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    xleftmargin=\parindent
+}
+
+\lstset{style=mystyle}
+
+% Fix for long URLs
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+
+% Additional spacing for readability
+\renewcommand{\baselinestretch}{1.2}

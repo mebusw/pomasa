@@ -1,0 +1,60 @@
+% LaTeX头部配置文件
+% 用于控制PDF输出格式，特别是中文支持
+
+% 字体配置 - 中文支持
+\usepackage{fontspec}
+\usepackage{xeCJK}
+
+% 设置字体（根据系统可用字体调整）
+% macOS系统常用字体
+\setmainfont{Cochin}
+\setCJKmainfont{Songti SC}
+\setCJKsansfont{PingFang SC}
+
+% 如果在Linux系统上，可以使用以下配置：
+% \setmainfont{Times New Roman}
+% \setCJKmainfont{SimSun}
+% \setCJKsansfont{SimHei}
+
+% 页面布局
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+% 行间距
+\usepackage{setspace}
+\onehalfspacing
+
+% 段落格式
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.5em}
+
+% 超链接
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+% 表格
+\usepackage{booktabs}
+\usepackage{array}
+
+% 图片
+\usepackage{graphicx}
+
+% 中文特殊支持
+\usepackage{xeCJK}
+\usepackage{xltxtra}
+
+% 颜色支持
+\usepackage{xcolor}
+
+% 代码块
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single
+}

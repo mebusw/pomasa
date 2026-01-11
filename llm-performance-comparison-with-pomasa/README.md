@@ -26,18 +26,19 @@ https://github.com/mebusw/pomasa/blob/main/references/%E5%85%AC%E4%BC%97%E5%8F%B
 你将帮我分析比较几个LLM在生产智能体编排的能力表现。
 我给他们的原始输入都是同样的 @user_input.md  和 @pattern-catalog/ 。
 
-他们的表现不一样，请你详细分析对比他们生成的结果。
-1. gemini-2.5-flash生成的，在 @industry_research-gemini-2.5/agents/00.orchestrator.md  
-2. gemini-3-pro生成的，在 @deep_research-gemini-3-pro/agents/00.orchestrator.md  
+他们的表现不一样，请你详细分析对比他们生成的结果，输出到一个md文件中。
+1. gemini-2.5-flash生成的，在 @policy_research-gemini-2.5/agents/00.orchestrator.md  
+2. gemini-3-pro生成的，在 @policy_research-gemini-3-pro/agents/00.orchestrator.md  
 3. claude-opus-4生成的，在 @policy_research-claude-opus-4/agents/00.orchestrator.md 
 4. glm-4.7生成的，在 @policy_research-glm-4.7/agents/00.orchestrator.md
 
 
 
-再将帮我分析比较几个LLM在多智能体执行的能力表现。他们的原始输入是他们各自编排出来的agents.
+再将帮我分析比较几个LLM在多智能体执行的能力表现（例如：真善美、高广深或suggested by AI）。他们的原始输入是他们各自编排出来的agents.
 
-他们的表现不一样，请你详细分析对比他们生成的结果。
-1. gemini-2.5-flash生成的，在 @industry_research-gemini-2.5/data/04_final_report/final_research_report.md  
-2. gemini-3-pro生成的，在 @deep_research-gemini-3-pro/data/05_final/final_report.md  
+他们的表现不一样，请你详细分析对比他们生成的结果，输出到一个md文件中。
+1. gemini-2.5-flash生成的，在 @policy_research-gemini-2.5/data/04_final_report/final_research_report.md  
+2. gemini-3-pro生成的，在 @policy_research-gemini-3-pro/data/05_final/final_report.md  
 3. claude-opus-4生成的，在 @policy_research-claude-opus-4/data/04.reports/final_report.md  
 4. glm-4.7生成的，在 @policy_research-glm-4.7/data/04.report/final_report.md
+5. glm-4.7+googleSearchMCP 生成的，在 @policy_research-glm-4.7-with-google-search/data/04.report/final_report.md

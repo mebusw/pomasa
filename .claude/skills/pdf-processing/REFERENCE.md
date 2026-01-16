@@ -1,1 +1,0 @@
-# API details for pypdf and pdfplumber

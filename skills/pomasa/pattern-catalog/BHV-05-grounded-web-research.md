@@ -69,11 +69,14 @@ This pattern may be skipped when:
    - Every piece of information must come from fetched page content
    - If a page cannot be fetched, that information cannot be used
 
-3. **Preserve Original Content in Full**
-   - Save the complete fetched content without modification
+3. **Preserve Original Content Verbatim**
+   - The web fetch tool returns markdown — **copy it as-is into the file**. Do not retype, reorganize, or restructure.
    - Do not summarize, paraphrase, or extract during collection
+   - Do not reorganize paragraphs into bullet-point lists — even if the original is long, save it as paragraphs
+   - Do not add section headings that did not exist in the original
    - Analysis and interpretation belong to a later phase
    - This ensures downstream agents work with primary sources, not second-hand summaries
+   - **Self-check after saving**: Compare the length of the fetched content with your saved file. If the saved file is drastically shorter (e.g., only 1/10 of the original), you summarized instead of preserving — redo it.
 
 4. **Document the Source Precisely**
    - Record the URL that was actually fetched
@@ -89,6 +92,29 @@ Separating collection from analysis provides several advantages:
 3. **Verifiable by Downstream Agents**: Analysis agents can verify any claim against the original
 4. **Reusable for Different Analyses**: The same source can support multiple analytical perspectives
 5. **Clear Responsibility**: Collection agents are responsible for obtaining reliable sources; analysis agents are responsible for understanding them
+
+### Common Failure Mode: Structured Extraction
+
+The most frequent failure of this pattern is not outright refusal — it is **structured extraction disguised as preservation**. The agent fetches a full article but then saves a reorganized version:
+
+```
+❌ What gets saved (WRONG — this is a summary, not full text):
+
+## Key Findings
+- Point 1
+- Point 2
+
+## Working Conditions
+- Detail 1
+- Detail 2
+
+## Policy Responses
+- Policy 1
+```
+
+This looks "complete" because all topics are covered, but it has destroyed the original text. Paragraphs are gone, nuance is lost, direct quotes are paraphrased, and downstream agents cannot verify claims against the original wording.
+
+The correct approach is to paste the web fetch tool output as-is — preserving all original paragraphs, sentence structures, and headings exactly as they appeared on the page.
 
 ### Correct Workflow
 
@@ -167,9 +193,13 @@ Save the fetched content in full:
 - Note the collection timestamp
 - Assess source credibility (based on the source, not the content)
 
-**Important**: Do NOT summarize, paraphrase, or extract key points. Save the
-complete content. Analysis will be performed by downstream agents who need
-access to the full original.
+**Important**: Do NOT summarize, paraphrase, or extract key points. The web
+fetch tool returns markdown — copy it as-is into the file. Analysis will be
+performed by downstream agents who need access to the full original.
+
+After saving, self-check: compare the fetched content length with your saved
+file. If the saved file is drastically shorter (e.g., only a fraction of the
+original), you summarized instead of preserving — redo it.
 
 ### What NOT to Do
 - ❌ Do not cite information from search summaries
@@ -178,6 +208,8 @@ access to the full original.
 - ❌ Do not summarize or paraphrase the fetched content
 - ❌ Do not extract "key points" or "relevant sections"
 - ❌ Do not interpret or analyze during collection
+- ❌ Do not reorganize paragraphs into bullet-point lists (the most common failure mode — agents extract "key findings" or "key data" into bullet lists, producing a summary that looks like "complete information" but is actually heavy-loss compression)
+- ❌ Do not add section headings or categories not present in the original (e.g., "Working Conditions", "Policy Responses" imposed on a narrative article)
 ```
 
 ### Handling Inaccessible Pages
@@ -326,7 +358,9 @@ When designing data collection agents, confirm:
 - [ ] Blueprint explicitly states that search summaries are not reliable data?
 - [ ] Blueprint requires fetching page content before saving any web information?
 - [ ] Blueprint explicitly prohibits summarizing or extracting during collection?
+- [ ] Blueprint explicitly prohibits reorganizing paragraphs into bullet-point lists?
 - [ ] Data recording format preserves complete original content?
+- [ ] Blueprint includes a self-check step (comparing fetched vs saved length)?
 - [ ] Data recording format includes fetch timestamp?
 - [ ] Data recording format does NOT include interpretation fields (key points, relevance, etc.)?
 - [ ] Instructions for handling inaccessible pages are provided?

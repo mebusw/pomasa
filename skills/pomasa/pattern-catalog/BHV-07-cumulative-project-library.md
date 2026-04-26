@@ -78,7 +78,7 @@ Each run interacts with the library in two phases:
 
 **Phase 1: Survey** — At the start of a run (typically during literature review), the agent scans the library to discover what's already available. Materials downloaded by previous runs may be directly relevant. This avoids redundant downloads and provides unexpected connections.
 
-**Phase 2: Contribute** — During research, when the agent fetches new materials from the web, it saves them to `library/` (following [BHV-05](./BHV-05-grounded-web-research.md) preservation rules) rather than to the run's private workspace. The workspace contains only analysis artifacts that reference library materials.
+**Phase 2: Contribute** — During research, when the agent fetches new materials from the web, it saves them to `library/` (following [BHV-05](./BHV-05-grounded-web-research.md) preservation rules) rather than to the run's private workspace. The workspace contains only analysis artifacts that reference library materials. After saving, the agent should verify that the saved file contains the full original text (not a summary or structured extraction).
 
 ```
 Run N starts
@@ -95,6 +95,7 @@ Identify gaps
     ▼
 Fetch new materials → save to library/
     │  (Following BHV-05: full content, verbatim, with metadata)
+    │  Verify: saved file ≈ fetched length (not a summary)
     │
     ▼
 Analyze using library/ + new materials → write to workspace/{run_id}/
@@ -143,6 +144,9 @@ When you fetch a new source from the web:
 1. Save it to the appropriate `library/` subdirectory (not to your workspace)
 2. Follow BHV-05 rules: preserve full content verbatim, include metadata
 3. Use a descriptive filename: `{author}-{short-title}-{year}.md`
+4. **Verify**: After saving, compare the file content against the fetched content. If the saved file is a structured extract (bullet points, key findings, reorganized sections) rather than the original text, redo it. The library must contain verbatim originals, not summaries.
+
+**The most common failure**: Agents save a "key findings" summary instead of the original text. The library file looks informative but has lost all paragraphs, nuance, and verbatim quotes. A library article of only 40-60 lines is almost certainly a summary, not a full-text article.
 
 ### In Your Analysis
 

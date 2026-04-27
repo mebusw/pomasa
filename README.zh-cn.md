@@ -143,10 +143,6 @@ POMASA 模式主要使用 Claude Code 编写和测试。这些模式引用了以
 
 **MCP 工具**：一些模式提到了命名格式为 `mcp__server__tool` 的 MCP（模型上下文协议）工具。这些是特定于支持 MCP 的运行时的。如果你的运行时不支持 MCP，请使用内置的等效工具（例如，使用 `WebSearch` 代替 MCP 搜索工具）。
 
-## 演进计划
+## 发表
 
-POMASA 是一个持续演进的项目：
-
-- 随着更多系统的构建和运行，提取新模式
-- 根据实际反馈改进现有模式描述
-- 探索不同领域的模式变体和适配
+Xiong Jie. **A Pattern Language for Knowledge Engineering with Large Language Models**. 载于 *第32届程序、人与实践模式语言大会论文集（PLoP 2025）*，美国华盛顿州哥伦比亚河谷 Skamania Lodge。ACM, 2026. [DOI: 10.64346/PLoP2025p02](https://doi.org/10.64346/PLoP2025p02) | [全文](https://plopcon.org/proceedings/plop/2025/2.html)

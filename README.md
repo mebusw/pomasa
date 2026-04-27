@@ -143,10 +143,6 @@ POMASA patterns are primarily written and tested with Claude Code. The patterns 
 
 **MCP Tools**: Some patterns mention MCP (Model Context Protocol) tools with naming format `mcp__server__tool`. These are specific to runtimes that support MCP. If your runtime doesn't support MCP, use the built-in equivalents (e.g., use `WebSearch` instead of an MCP search tool).
 
-## Evolution Plan
+## Publication
 
-POMASA is a continuously evolving project:
-
-- Extract new patterns as more systems are built and operated
-- Refine existing pattern descriptions based on practical feedback
-- Explore pattern variants and adaptations across different domains
+Xiong Jie. **A Pattern Language for Knowledge Engineering with Large Language Models**. In *Proceedings of the 32nd Conference on Pattern Languages of Programs, People, and Practices (PLoP 2025)*, Skamania Lodge, Columbia River Gorge, WA, USA. ACM, 2026. [DOI: 10.64346/PLoP2025p02](https://doi.org/10.64346/PLoP2025p02) | [Full text](https://plopcon.org/proceedings/plop/2025/2.html)

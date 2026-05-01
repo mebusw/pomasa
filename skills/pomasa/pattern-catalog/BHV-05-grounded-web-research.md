@@ -79,9 +79,14 @@ This pattern may be skipped when:
    - **Self-check after saving**: Compare the length of the fetched content with your saved file. If the saved file is drastically shorter (e.g., only 1/10 of the original), you summarized instead of preserving — redo it.
 
 4. **Document the Source Precisely**
-   - Record the URL that was actually fetched
+   - Record the URL that was actually fetched, as a single bare URL. No parenthetical annotations, no "(verified via search)" stamps, no two URLs joined by prose. Provenance and quality notes belong in other fields (credibility, source-type, a notes section), not in the URL slot — downstream agents read it mechanically and break on contamination.
    - Note the fetch timestamp
    - Record source type and credibility assessment based on the source (not the content)
+
+5. **One Source per SRC Block**
+   - Each SRC block records exactly one source: one URL, one fetched page, one verbatim content section.
+   - If a claim is backed by multiple distinct sources, write multiple SRC blocks. BHV-08 (wiki integration) handles multi-source claims by listing parallel evidence entries on the same typed link; it does not need conflated SRCs.
+   - Conflating sources forces the metadata fields to misrepresent at least one of them, and breaks the verbatim-content invariant.
 
 ### Why Preserve Full Content?
 
@@ -210,6 +215,8 @@ original), you summarized instead of preserving — redo it.
 - ❌ Do not interpret or analyze during collection
 - ❌ Do not reorganize paragraphs into bullet-point lists (the most common failure mode — agents extract "key findings" or "key data" into bullet lists, producing a summary that looks like "complete information" but is actually heavy-loss compression)
 - ❌ Do not add section headings or categories not present in the original (e.g., "Working Conditions", "Policy Responses" imposed on a narrative article)
+- ❌ Do not annotate the Source URL field with parenthetical context, fetch caveats, or multiple URLs joined by prose
+- ❌ Do not conflate two distinct sources into one SRC block — write two SRC blocks instead
 ```
 
 ### Handling Inaccessible Pages
@@ -231,7 +238,7 @@ The correct response is to find another source or acknowledge the gap.
 ```markdown
 ## [SRC-XXX] Source Title
 
-**Source URL**: [The URL that was actually fetched]
+**Source URL**: [single bare URL — no annotations]
 **Fetch Time**: [When the fetch was performed]
 **Source Type**: [Academic Article / Policy Document / News Report / ...]
 **Credibility**: [High / Medium / Low - based on source authority, not content]
@@ -240,6 +247,8 @@ The correct response is to find another source or acknowledge the gap.
 
 [Complete content from fetch tool, preserved verbatim]
 ```
+
+If the page could not be fetched (paywalled, broken, etc.), do not write the SRC — per § Handling Inaccessible Pages, the information cannot be used. The URL slot is never the place to record fetch caveats.
 
 Note: The format is intentionally minimal. No "extracted content", "key quotes", or "relevance assessment" fields—these require interpretation and belong to the analysis phase.
 
@@ -362,6 +371,8 @@ When designing data collection agents, confirm:
 - [ ] Data recording format preserves complete original content?
 - [ ] Blueprint includes a self-check step (comparing fetched vs saved length)?
 - [ ] Data recording format includes fetch timestamp?
+- [ ] Source URL field is specified as a single bare URL with no annotations or multi-URL prose?
+- [ ] Blueprint specifies one source per SRC block (multi-source claims become multiple SRC blocks)?
 - [ ] Data recording format does NOT include interpretation fields (key points, relevance, etc.)?
 - [ ] Instructions for handling inaccessible pages are provided?
 - [ ] Agent knows not to fall back to summaries when fetch fails?

@@ -71,6 +71,7 @@ Based on user requirements, determine which patterns to adopt:
 - Recommended patterns: Adopt by default, unless the user scenario clearly does not need them
 - Optional patterns: Decide based on specific needs
   - **BHV-06 Configurable Tool Binding**: Adopt if user has configured custom web search or fetch tools
+  - **BHV-08 Wiki Integration**: Adopt if user selects "Wiki" in Deliverable File Formats. When adopted, also adopt BHV-07 (Cumulative Project Library) since the wiki depends on the library for source tracking
 
 ### Step 2.5: Read All Required Patterns (Mandatory)
 
@@ -113,11 +114,18 @@ Referring to the selected pattern documents, generate:
 │   └── latex-header.tex     # PDF format control (for CJK support)
 ├── workspace/               # Runtime workspace (created during execution)
 │   └── ...
+├── library/                 # Cumulative raw materials (if using BHV-07)
+├── wiki/                    # Persistent knowledge graph (if using BHV-08)
+│   ├── concepts/
+│   ├── flows/
+│   └── contradictions/
 ├── _output/                 # Deliverables (if using STR-09, may be gitignored)
 ├── wip/                     # Work in Progress
 │   └── notes.md
 └── README.md
 ```
+
+**Wiki output (BHV-08):** When Wiki is selected as a deliverable format, read `pattern-catalog/BHV-08-wiki-integration.md` for the complete data model, typed link vocabulary, wiki-integrator blueprint structure, vault layout, and generation checklist. Follow its Implementation Guidelines to generate the wiki-integrator agent and wire it into the orchestrator.
 
 ### Step 4: Delivery Instructions
 

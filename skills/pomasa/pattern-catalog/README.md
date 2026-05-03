@@ -105,6 +105,7 @@ Patterns are grouped by category, identified by a three-letter prefix:
 | BHV-05 | [Grounded Web Research](./BHV-05-grounded-web-research.md) | Recommended | Fetch original content before using web information |
 | BHV-06 | [Configurable Tool Binding](./BHV-06-configurable-tool-binding.md) | Optional | Allow users to configure custom search and fetch tools with fallback |
 | BHV-07 | [Cumulative Project Library](./BHV-07-cumulative-project-library.md) | Recommended | Accumulate raw materials in a shared library across multiple runs |
+| BHV-08 | [Wiki Integration](./BHV-08-wiki-integration.md) | Optional | Transform research output into persistent, compounding Obsidian knowledge graph |
 
 ### QUA - Quality Patterns
 
@@ -174,6 +175,14 @@ Patterns are grouped by category, identified by a three-letter prefix:
     │ Workspace     │
     │ Isolation     │
     └───────────────┘
+
+    ┌───────────────┐       ┌───────────────┐
+    │ BHV-07        │──────▶│ BHV-08        │
+    │ Cumulative    │       │ Wiki          │
+    │ Project       │       │ Integration   │
+    │ Library       │       │ (Optional)    │
+    └───────────────┘       └───────────────┘
+     library/ feeds wiki/    wiki/ compounds
 ```
 
 ## How to Use This Catalog
@@ -197,6 +206,7 @@ Patterns are grouped by category, identified by a three-letter prefix:
 
 ## Version History
 
+- **v0.13** (2026-04): Added BHV-08 Wiki Integration for transforming research output into a persistent Obsidian knowledge graph with typed links
 - **v0.12** (2026-04): Added BHV-07 Cumulative Project Library for accumulating raw materials across multiple MAS runs
 - **v0.11** (2026-01): Replaced STR-07 with Reverse-Engineered Research Questions (practical alternative to the abstract conceptualization approach)
 - **v0.10** (2026-01): Upgraded STR-06 Methodological Guidance to Required (was Recommended); STR-01 and STR-06 are now a mandatory pair

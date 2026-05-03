@@ -148,6 +148,16 @@ When you fetch a new source from the web:
 
 **The most common failure**: Agents save a "key findings" summary instead of the original text. The library file looks informative but has lost all paragraphs, nuance, and verbatim quotes. A library article of only 40-60 lines is almost certainly a summary, not a full-text article.
 
+### Metadata Field Cleanliness
+
+Library frontmatter is read mechanically by downstream agents (BHV-08 wiki-integrators substitute `url:` byte-identical into citation markdown links). Each field holds either a single canonical value or a documented MISSING sentinel — never prose mixed with the value.
+
+The most failure-prone field is `url:`:
+- **Permitted**: a single bare URL (`https://example.org/article/...`, copied as fetched), or a MISSING sentinel (`unknown`, `Not specified`, empty, absent).
+- **Forbidden**: URL plus parenthetical (`https://example.org/x (cited via web search)`) → keep just the URL, or write `unknown` if the parenthetical implies the URL is broken; multiple URLs joined by prose → write `unknown` (do not pick one arbitrarily); prose with no URL → write `unknown`.
+
+Working notes about *which* URL was used or *why* it is questionable belong in the stub body, not in the metadata. Failures from prose-contaminated `url:` fields are silent — downstream produces broken markdown links that render as dead clickable text.
+
 ### In Your Analysis
 
 When referencing library materials in your SRC files or reports:

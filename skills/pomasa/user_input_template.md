@@ -72,8 +72,10 @@ List your reference materials below (file paths or URLs). The Generator will con
 - [x] Markdown (always generated)
 - [x] DOCX (recommended, for editing)
 - [x] PDF (recommended, for distribution)
+- [ ] Wiki (persistent Obsidian knowledge graph, for compounding research across runs)
 
 If DOCX/PDF are selected, the Generator will set up an export pipeline with templates (STR-09).
+If Wiki is selected, the Generator will create a wiki-integrator agent and `wiki/` directory structure (BHV-08).
 
 ---
 

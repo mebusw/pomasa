@@ -7,7 +7,7 @@
 ## 极简使用教程
 
 ```bash
-npx add-skill eXtremeProgramming-cn/pomasa
+npx skills add eXtremeProgramming-cn/pomasa
 ```
 
 然后只需告诉你的 AI 客户端（例如 Claude Code 或 Codex）:
@@ -84,7 +84,7 @@ pomasa/
 为 Claude Code、Cursor、Cline 和其他兼容智能体安装 POMASA 作为智能体技能：
 
 ```bash
-npx add-skill eXtremeProgramming-cn/pomasa
+npx skills add eXtremeProgramming-cn/pomasa
 ```
 
 安装后，只需告诉智能体你想要什么：

@@ -84,7 +84,7 @@ pomasa/
 Install POMASA as an agent skill for Claude Code, Cursor, Cline, and other compatible agents:
 
 ```bash
-npx add-skill eXtremeProgramming-cn/pomasa
+npx skills add eXtremeProgramming-cn/pomasa
 ```
 
 After installation, simply tell the agent what you want:

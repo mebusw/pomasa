@@ -10,13 +10,13 @@
 npx skills add eXtremeProgramming-cn/pomasa
 ```
 
-然后只需告诉你的 AI 客户端（例如 Claude Code 或 Codex）:
+然后只需告诉你的 AI 客户端（例如 Claude Code 或 Codex 或 OpenClaw）:
 
 ```
-帮我创建一个用于分析医疗保健领域 AI 趋势的多智能体研究系统。
+帮我创建一个用于分析医疗保健领域 AI 趋势的多智能体研究系统。我的需求是...
 ```
 
-就这样。智能体会引导你完成其余步骤。
+就这样。AI 会引导你完成其余步骤，包括如何使用新生成的智能体。
 
 ## 目的
 
@@ -90,7 +90,7 @@ npx skills add eXtremeProgramming-cn/pomasa
 安装后，只需告诉智能体你想要什么：
 
 ```
-帮我创建一个用于分析医疗保健领域 AI 趋势的多智能体研究系统。
+/pomasa 帮我创建一个用于分析医疗保健领域 AI 趋势的多智能体研究系统。我的需求是...
 ```
 
 智能体将自动激活 POMASA 技能并引导你完成流程。

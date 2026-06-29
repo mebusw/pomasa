@@ -10,13 +10,13 @@
 npx skills add eXtremeProgramming-cn/pomasa
 ```
 
-Then just tell your AI client (e.g. Claude Code or Codex):
+Then just tell your AI client (e.g. Claude Code or Codex or OpenClaw):
 
 ```
 Help me create a multi-agent research system for analyzing AI trends in healthcare.
 ```
 
-That's it. The agent will guide you through the rest.
+That's it. The AI will guide you through the rest, including how to use new generated agents.
 
 ## Purpose
 
@@ -90,7 +90,7 @@ npx skills add eXtremeProgramming-cn/pomasa
 After installation, simply tell the agent what you want:
 
 ```
-Help me create a multi-agent research system for analyzing AI trends in healthcare.
+/pomasa Help me create a multi-agent research system for analyzing AI trends in healthcare. My requirements are...
 ```
 
 The agent will automatically activate the POMASA skill and guide you through the process.
